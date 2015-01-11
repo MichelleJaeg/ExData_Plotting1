@@ -10,9 +10,9 @@ make_plots <- function(data) {
   split.screen(c(2, 2))
   screen(1)
   plot(data$DateTime, data$Global_active_power, type="l", xlab="", 
-       ylab="Global Active Power (kilowatts)", cex.lab=0.6)
+       ylab="Global Active Power", cex.lab=0.75)
   screen(2)
-  plot(data$DateTime, data$Voltage, type="l", xlab="datetime", ylab="Voltage")
+  plot(data$DateTime, data$Voltage, type="l", xlab="datetime", ylab="Voltage", cex.lab=0.8)
   screen(3)
   plot(x = data$DateTime, y = data$Sub_metering_1, type="l", xlab="", 
        ylab="Energy sub metering", col = "black", ylim=c(0, 40), cex.lab=0.75)
@@ -23,11 +23,12 @@ make_plots <- function(data) {
   legend("topright", legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"),
   lty=c(1, 1),
   lwd=c(1, 1, 1), col=c("black", "red", "blue"),
+  box.lwd=0,
   cex=0.6)
   par(new=F)
   screen(4)
   plot(data$DateTime, data$Global_reactive_power, type="l", xlab="datetime", 
-       ylab="Global_reactive_power", cex.lab=0.75)
+       ylab="Global_reactive_power", cex.lab=0.75, ylim=c(0.0, 0.5))
   dev.off()
   
 }
